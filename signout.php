@@ -1,0 +1,12 @@
+<?php
+  session_start();
+  if(isset($_SESSION['fullname'])){
+  unset($_SESSION['login']);
+  unset($_SESSION['fullname']);
+  unset($_SESSION['email']);
+  unset($_SESSION['phone']);
+  }
+  session_unset();
+  session_destroy();
+  header("location:login.php");
+?>
