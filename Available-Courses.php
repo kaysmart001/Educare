@@ -39,17 +39,27 @@
             $course_price=$course['price'];
         ?>
    
-  <div class="col-lg-3 col-sm-6 col-md-4 col-xs-6">
+  <div class="col-lg-4 col-sm-6 col-md-4 col-xs-6">
     <div class="card p-2 rounded hover-shadow">
       <div class="card-body">
         <a href="#">
           <h4 class="card-title course-title"><?php echo $course_title; ?></h4>
         </a>
-        
         <h6 class="card-text mb-3"><?php echo $course_des; ?></h6>
-        <p class="card-text mb-2"><i class="ti-list mr-1"></i><?php echo $total;?> questions</p>
-        <p class="card-text mb-2"><i class="ti-time mr-1"></i><?php echo $course_time?> mins</p>
-        <p class="card-text mb-2"><i class="ti-credit-card"></i> &#8358;<?php echo $course_price?></p>
+        <ul class="list-group mb-2">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+            <i class="ti-list mr-1"> Total Questions</i>
+            <span class="badge badge-primary badge-pill" style="background-color: midnightblue;"><?php echo $total; ?></span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+            <i class="ti-time mr-1"> Time Allowed</i>
+            <span class="badge badge-primary badge-pill" style="background-color: midnightblue;"><?php echo $course_time; ?> mins</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+            <i class="ti-credit-card mr-1"> price</i> 
+            <span class="badge badge-primary badge-pill" style="background-color: midnightblue;">&#8358;<?php echo $course_price; ?></span>
+            </li>
+        </ul>
         <form method="post">
           <input type="hidden" name="item_id" value="<?php echo $eid; ?>">
           <input type="hidden" name="item_name" value="<?php echo $course_title; ?>">
