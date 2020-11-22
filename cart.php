@@ -21,10 +21,10 @@ if ($balance>=$amount) {
   $emptycart=mysqli_query($conn,"DELETE FROM cart WHERE user_id='$email'");
   $currentbalance=$balance-$amount;
   $updatebalance=mysqli_query($conn,"UPDATE wallet SET wallet_amount='$currentbalance' WHERE email='$email'");
-  echo "<script>alert('Course(s) successfully purchased');</script>";
+  echo "<script>mcxDialog.alert('Course(s) successfully purchased');</script>";
   echo "<script>document.location.href='user_dashboard.php?q=purchased';</script>";
 }else{
-  echo "<script>alert('Course(s) could not be purchased due to insufficient funds, kindly fund your wallet and try again');</script>";
+  echo "<script>mcxDialog.alert('Course(s) could not be purchased due to insufficient funds, kindly fund your wallet and try again');</script>";
 }
 
 }
@@ -51,10 +51,10 @@ if(@$_GET['q']== 'cart' && @$_GET['opt']=='coins'){
    $emptycart=mysqli_query($conn,"DELETE FROM cart WHERE user_id='$email'");
    $currentbalance=$balance-($amount*2);
    $updatebalance=mysqli_query($conn,"UPDATE wallet SET coins='$currentbalance' WHERE email='$email'");
-   echo "<script>alert('Course(s) successfully purchased');</script>";
+   echo "<script>mcxDialog.alert('Course(s) successfully purchased');</script>";
    echo "<script>document.location.href='user_dashboard.php?q=purchased';</script>";
  }else{
-   echo "<script>alert('Course(s) could not be purchased due to insufficient funds, kindly fund your wallet and try again');</script>";
+   echo "<script>mcxDialog.alert('Course(s) could not be purchased due to insufficient funds, kindly fund your wallet and try again');</script>";
  }
 
 }

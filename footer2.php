@@ -27,6 +27,24 @@
       tinycomments_mode: 'embedded',
       tinycomments_author: 'Author name'
     });
+
+
+    function myFunction() {
+    var input, filter, cards, cardContainer, h5, title, i, code;
+    input = document.getElementById("myFilter");
+    filter = input.value.toUpperCase();
+    cardContainer = document.getElementById("myItems");
+    cards = cardContainer.getElementsByClassName("course-item");
+    for (i = 0; i < cards.length; i++) {
+        title = cards[i].querySelector(".course-title");
+        code = cards[i].querySelector(".card-body h6.card-title");
+        if (title.innerText.toUpperCase().indexOf(filter) > -1 || code.innerText.toUpperCase().indexOf(filter) > -1) {
+            cards[i].style.display = "";
+        } else {
+            cards[i].style.display = "none";
+        }
+    }
+}
     </script>
   </body>
 </html>

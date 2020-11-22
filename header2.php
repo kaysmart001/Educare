@@ -37,6 +37,9 @@
   <link rel="stylesheet" href="css/font.css">
   <link rel="stylesheet" href="css/sidebar.css">
 
+  <link rel="stylesheet" href="plugins/mcx/dist/css/dialog-mobile.css">
+  <script src="plugins/mcx/dist/mcx-dialog.js"></script>
+
   <!--Favicon-->
   <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
   <link rel="icon" href="images/favicon.ico" type="image/x-icon">
