@@ -1,6 +1,6 @@
 <?php include 'header.php'; ?>
 <!-- hero slider -->
-<section class="hero-section overlay bg-cover" data-background="images/banner/banner-1.jpg">
+<section class="hero-section overlay bg-cover" data-background="assets/images/banner/banner-1.jpg">
   <div class="container">
     <div class="hero-slider">
       <!-- slider item -->
@@ -44,7 +44,7 @@
   <div class="container-fluid p-0">
     <div class="row no-gutters">
       <div class="col-xl-4 col-lg-5 align-self-end">
-        <img class="img-fluid w-100" src="images/banner/banner-feature.jpg" alt="banner-feature">
+        <img class="img-fluid w-100" src="assets/images/banner/banner-feature.jpg" alt="banner-feature">
       </div>
       <div class="col-xl-8 col-lg-7">
         <div class="row feature-blocks bg-gray justify-content-between">
@@ -88,7 +88,7 @@
         <a href="about.php" class="btn btn-primary-outline">Learn more</a>
       </div>
       <div class="col-md-6 order-1 order-md-2 mb-4 mb-md-0">
-        <img class="img-fluid w-100" src="images/about/about-us.jpg" alt="about image">
+        <img class="img-fluid w-100" src="assets/images/about/about-us.jpg" alt="about image">
       </div>
     </div>
   </div>
@@ -210,7 +210,7 @@ $stmt = $pdo->prepare($sql);
 <!-- /courses -->
 
 <!-- success story -->
-<section class="section bg-cover" data-background="images/backgrounds/success-story.jpg">
+<section class="section bg-cover" data-background="assets/images/backgrounds/success-story.jpg">
   <div class="container">
     <div class="row">
       <div class="col-lg-6 col-sm-4 position-relative success-video">
@@ -261,7 +261,7 @@ $stmt = $pdo->prepare($sql2);
   <div class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
     <div class="card border-0 rounded-0 hover-shadow">
       <div class="card-img position-relative">
-        <img class="card-img-top rounded-0" src="images/events/event-1.jpg" alt="event thumb">
+        <img class="card-img-top rounded-0" src="assets/images/events/event-1.jpg" alt="event thumb">
         <div class="card-date"><span><?php echo date_format($date, 'd'); ?></span><br><?php echo date_format($date, 'F'); ?></div>
       </div>
       <div class="card-body">

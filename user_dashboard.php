@@ -57,7 +57,7 @@ if(!isset($user) || !isset($email)) {
             </li>
             <li class="side-menu-link <?php if(@$_GET['q']==7) echo 'active'; ?>">
             <a class="d-inline-block p-2 text-color" href="user_dashboard.php?q=7"><i class="ti-download"></i> 
-            Download study material</a>
+            Study materials</a>
             </li>
             <li class="side-menu-link <?php if(@$_GET['q']=='feed') echo 'active'; ?>">
             <a class="d-inline-block p-2 text-color" href="user_dashboard.php?q=feed"><i class="ti-help"></i> 

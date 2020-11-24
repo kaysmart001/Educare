@@ -15,7 +15,7 @@ if (isset($_POST['feed']) && !empty($_POST['name']) && !empty($_POST['subject'])
   
     <div class="row">
     <div class="col-md-3"></div>
-    <div class="col-md-6" style="background-image:url(images/bg1.jpg); min-height:430px;">
+    <div class="col-md-6" style="background-image:url(assets/images/bg1.jpg); min-height:430px;">
     <h2 align="center" style="font-family:'typo'; color:#000066">FEEDBACK/REPORT A PROBLEM</h2>
     <div style="font-size:14px">
     You can send us your feedback through e-mail on the following e-mail id:<br />
@@ -53,7 +53,7 @@ if (isset($_POST['feed']) && !empty($_POST['name']) && !empty($_POST['subject'])
     <div class="col-md-9">
     <!-- Text input-->
     <div class="form-group">
-      <input id="email" name="email" placeholder="Enter your email-id" class="form-control input-md" type="email">    
+      <input id="email" name="email" placeholder="Enter your email address" class="form-control input-md" type="email">    
      </div>
     </div>
     </div><!--End of row-->

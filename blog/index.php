@@ -1,23 +1,9 @@
-<?php require_once('./includes/header.php'); ?>
-
-<section class="page-title-section overlay" data-background="../images/banner/banner-1.jpg" style="padding: 100px 0 80px">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-8">
-        <ul class="list-inline custom-breadcrumb">
-          <li class="list-inline-item"><a class="h2 text-primary font-secondary" href="index.php">Blog </a></li>
-          <li class="list-inline-item text-white h3 font-secondary nasted">All Posts</li>
-        </ul>
-        <p class="text-lighten"></p>
-      </div>
-    </div>
-  </div>
-</section>
+<?php require_once('header.php'); ?>
 <!-- /page title -->
       <?php
         $post_per_page = 6;
         $status = "Published";
-        $sql = "SELECT * FROM posts WHERE post_status = :status";
+        $sql = "SELECT * FROM posts WHERE status = :status";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([
           ':status' => $status
@@ -41,25 +27,26 @@
     <div class="row align-items-center">
         <?php 
           $status = 'Published';
-          $sql = "SELECT * FROM posts WHERE post_status = :status ORDER BY post_id DESC LIMIT $page_id, $post_per_page";
+          $sql = "SELECT * FROM posts WHERE status = :status ORDER BY id DESC LIMIT $page_id, $post_per_page";
           $stmt = $pdo->prepare($sql);
           $stmt->execute([
             ':status'=>$status
           ]);          
           while($post = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $post_id = $post['post_id'];
-            $post_title = $post['post_title'];
-            $post_des = substr($post['post_des'], 0, 200);
-            $post_image = $post['post_image'];
-            $post_date = $post['post_date'];
-            $post_author = $post['post_author'];
-            $post_cat_id = $post['post_cat_id'];
-            $post_status = $post['post_status']; ?>
+            $post_id = $post['id'];
+            $post_title =html_entity_decode($post['title'],ENT_QUOTES);
+            $post_des = html_entity_decode(substr($post['body'], 0, 250),ENT_QUOTES);
+            $post_image = $post['cover'];
+            $created_at = $post['created_at'];
+            $updated_at = $post['updated_at'];
+            $post_author = $post['author'];
+            $post_cat_id = $post['category_id'];
+            $post_status = $post['status']; ?>
             <div class="col-md-4 mb-5">
               <div class="card text-center">
-                <img src="./img/<?php echo $post_image; ?>" alt="Image" class="card-img-top">
+                <img src="img/<?php echo $post_image; ?>" alt="Image" class="card-img-top">
                 <div class="card-header">
-                  <span class="posted"><a href="categories.php?id=<?php echo $post_cat_id; ?>" class="category">
+                  <h4 class="posted"><a href="categories.php?id=<?php echo $post_cat_id; ?>" class="category">
                   <?php 
                     $sql1 = "SELECT * FROM categories WHERE cat_id = :id";
                     $stmt1 = $pdo->prepare($sql1);
@@ -70,7 +57,7 @@
                     echo $cat_title;
                   ?>
                 </a>
-                </span>
+                </h4>
                 </div>
                 <div class="card-body">
                   <h5 class="card-title"><a href="single.php?id=<?php echo $post_id; ?>"><?php echo $post_title; ?></a></h5>
@@ -78,7 +65,9 @@
                   <a href="single.php?id=<?php echo $post_id; ?>" class="btn btn-primary">Read more &rarr;</a>
                 </div>
                 <div class="card-footer text-muted">
-                   Posted by <?php echo $post_author; ?> on <?php echo $post_date; ?>
+                   Author: <?php echo $post_author; ?> <br>
+                   Date posted: <?php echo $created_at; ?> <br>
+                   Last updated: <?php echo $updated_at; ?>
                 </div>
               </div>
             </div>
@@ -136,4 +125,4 @@
       
  </div>
 </section>
-<?php require_once("./includes/footer.php"); ?>
+<?php require_once("footer.php"); ?>

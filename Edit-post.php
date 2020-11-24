@@ -1,70 +1,74 @@
 <?php if(@$_GET['action']=='update'){
   if(isset($_POST['update-post'])) {
-      $post_title = $_POST['post-title'];
+      $post_title = htmlentities($_POST['post-title'],ENT_QUOTES); 
       $post_cat_id = $_POST['cat-id'];
       $post_status = $_POST['post-status'];
-      $post_content = $_POST['post-content'];
+      $post_content = htmlentities($_POST['post-content'],ENT_QUOTES);
       $postid = $_POST['edit-post-id'];
-      $post_date = date('j F Y');
-      $post_author = $_SESSION['fullname'];
-      $ext=explode('.', $_FILES['post-image']['name'])[1];
-      $imagename=explode('.', $_FILES['post-image']['name'])[0];
-      $post_image = $imagename.mt_rand(10,1000).'.'.$ext;
-      $post_temp_image = $_FILES['post-image']['tmp_name'];
-      move_uploaded_file("{$post_temp_image}", "blog/img/{$post_image}");
-      if(empty($post_image)) {
-          $sql3 = "SELECT * FROM posts WHERE post_id = :id";
+      $post_updated_date= date('j F Y');
+      if ($_FILES['post-image']['name']=='') 
+      {
+        $sql3 = "SELECT * FROM posts WHERE id = :id";
           $stmt3 = $pdo->prepare($sql3);
           $stmt3->execute([
               ':id' => $postid
           ]);
           while($p = $stmt3->fetch(PDO::FETCH_ASSOC)) {
-              $post_image = $p['post_image'];
-          };
+              $post_image = $p['cover'];
+          }
       }
-      
+      else
+        {
+          $ext=end(explode('.', $_FILES['post-image']['name']));
+          $imagename=explode('.', $_FILES['post-image']['name'])[0];
+          $post_image = uniqid().$imagename.'.'.$ext;
+          $post_temp_image = $_FILES['post-image']['tmp_name'];
+          move_uploaded_file("{$post_temp_image}", "blog/img/{$post_image}");
+        }
      
-      if(empty($post_title) || empty($post_cat_id) || empty($post_status) || empty($post_content)) {
-          echo "<div class='alert alert-danger'>Field can't be empty!</div>";
-      } else {
-          $sql = "UPDATE posts SET post_title = :title, post_des = :post, post_image = :image, post_date = :date, post_author = :author, post_cat_id = :catid, post_status = :status WHERE post_id = :postid";
+      if(empty($post_title) || empty($post_cat_id) || empty($post_status) || empty($post_content)) 
+      {
+          echo "<script>mcxDialog.alert('All fields must be filled!');</script>";
+      } 
+      else 
+      {
+          $sql = "UPDATE posts SET title = :title, body = :post, cover = :image, updated_at = :date, category_id = :catid, status = :status WHERE id = :postid";
           $stmt = $pdo->prepare($sql);
           $stmt->execute([
               ':title'=>$post_title,
               ':post'=>$post_content,
               ':image'=>$post_image,
-              ':date'=>$post_date,
-              ':author'=>$post_author,
+              ':date'=>$post_updated_date,
               ':catid'=>$post_cat_id,
               ':status'=>$post_status,
               ':postid'=>$postid
           ]);
-          header("Location: user_dashboard.php?q=5");
+          header("Location: user_dashboard.php?q=5&message=updated");
       }
   }
 } 
 
 ?>
-<?php if(@$_GET['q']=='editpost'): ?>
+<?php if(@$_GET['q']=='edit-post'): ?>
   <?php 
   if(isset($_POST['val'])) {
       $pid = $_POST['val'];
-      $sql = "SELECT * FROM posts WHERE post_id = :pid";
+      $sql = "SELECT * FROM posts WHERE id = :pid";
       $stmt = $pdo->prepare($sql);
       $stmt->execute([
           ':pid'=>$pid
       ]);
       while($post = $stmt->fetch(PDO::FETCH_ASSOC)) {
-          $post_id = $post['post_id'];
-          $post_title = $post['post_title'];
-          $post_cat_id = $post['post_cat_id'];
-          $post_status = $post['post_status'];
-          $post_image = $post['post_image'];
-          $post_content = $post['post_des'];
+          $post_id = $post['id'];
+          $post_title = $post['title'];
+          $post_cat_id = $post['category_id'];
+          $post_status = $post['status'];
+          $post_image = $post['cover'];
+          $post_content = $post['body'];
       }
   }
   ?>
-  <form method="POST" action="user_dashboard.php?action=update" enctype="multipart/form-data">
+  <form method="POST" action="user_dashboard.php?q=edit-post&action=update" enctype="multipart/form-data">
       <div class="form-group">
           <input type="hidden" value="<?php echo $post_id; ?>" name="edit-post-id" />
           <label for="post-title">Post Title</label>
@@ -93,13 +97,13 @@
           </select>
       </div>
       <div class="form-group">
-          <img src="blog/img/<?php echo $post_image; ?>" style="width:50px;height:50px" />
+          <img src="blog/img/<?php echo $post_image; ?>" style="width:100px;height:100px" />
           <label for="post-image">Upload post image</label>
           <input name="post-image" type="file" class="form-control-file" id="post-image">
       </div>
       <div class="form-group">
           <label for="post-content">Post Content</label>
-          <textarea name="post-content" class="form-control" id="post-content" rows="6" cols="30" placeholder="Your post content"><?php echo $post_content; ?></textarea>
+          <textarea name="post-content" class="form-control" id="post-content" rows="10" placeholder="Your post content"><?php echo $post_content; ?></textarea>
       </div>
       <input name="update-post" type="submit" class="btn btn-primary rounded" value="Update post">
   </form>

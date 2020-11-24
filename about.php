@@ -1,6 +1,6 @@
 <?php include 'header.php'; ?>
 <!-- page title -->
-<section class="page-title-section overlay" data-background="images/backgrounds/page-title.jpg">
+<section class="page-title-section overlay" data-background="assets/images/backgrounds/page-title.jpg">
   <div class="container">
     <div class="row">
       <div class="col-md-8">
@@ -43,26 +43,26 @@
         <h3 class="section-title text-center">MEET OUR TEAM</h3>
       </div>
       <div class="col-lg-4 text-center">
-        <img class="rounded-circle" src="images/teachers/teacher-1.jpg" alt="Team member" width="300" height="300">
+        <img class="rounded-circle" src="assets/images/teachers/teacher-1.jpg" alt="Team member" width="300" height="300">
         <h3>Balogun Abdulquddus</h3>
         <p>Fullstack developer</p>
       </div>
       <div class="col-lg-4 text-center">
-        <img class="rounded-circle" src="images/teachers/teacher-2.jpg" alt="Team member" width="300" height="300">
+        <img class="rounded-circle" src="assets/images/teachers/teacher-2.jpg" alt="Team member" width="300" height="300">
         <h3>Agbabiaka Motunrayo</h3>
         <p>Team Leader</p>
       </div>
       <div class="col-lg-4 text-center">
-        <img class="rounded-circle" src="images/teachers/teacher-3.jpg" alt="Team member" width="300" height="300">
+        <img class="rounded-circle" src="assets/images/teachers/teacher-3.jpg" alt="Team member" width="300" height="300">
         <h3>Bello Ismail</h3>
         <p>Technical Support</p>
       </div>
     </div>
-</section> 
+</section>
 <!-- OUR TEAM -->
 
 <!-- success story -->
-<section class="section bg-cover" data-background="images/backgrounds/success-story.jpg">
+<section class="section bg-cover" data-background="assets/images/backgrounds/success-story.jpg">
   <div class="container">
     <div class="row">
       <div class="col-lg-6 col-sm-4 position-relative success-video">

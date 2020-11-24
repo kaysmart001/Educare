@@ -71,18 +71,36 @@
 <!-- /footer -->
 
 <!-- jQuery -->
-<script src="plugins/jQuery/jquery.min.js"></script>
+<script src="assets/js/jquery.js"></script>
 <!-- Bootstrap JS -->
-<script src="plugins/bootstrap/bootstrap.min.js"></script>
+<script src="assets/js/bootstrap.bundle.js"></script>
 <!-- slick slider -->
-<script src="plugins/slick/slick.min.js"></script>
+<script src="assets/plugins/slick/slick.min.js"></script>
 <!-- aos -->
-<script src="plugins/aos/aos.js"></script>
+<script src="assets/plugins/aos/aos.js"></script>
 <!-- venobox popup -->
-<script src="plugins/venobox/venobox.min.js"></script>
+<script src="assets/plugins/venobox/venobox.min.js"></script>
 <!-- mixitup filter -->
-<script src="plugins/mixitup/mixitup.min.js"></script>
+<script src="assets/plugins/mixitup/mixitup.min.js"></script>
 <!-- Main Script -->
-<script src="js/script.js"></script>
+<script src="assets/js/script.js"></script>
+<script>
+  function myFunction() {
+    var input, filter, cards, cardContainer, h5, title, i, code;
+    input = document.getElementById("myFilter");
+    filter = input.value.toUpperCase();
+    cardContainer = document.getElementById("myItems");
+    cards = cardContainer.getElementsByClassName("course-item");
+    for (i = 0; i < cards.length; i++) {
+        title = cards[i].querySelector(".course-title");
+        code = cards[i].querySelector(".card-body li.course-code");
+        if (title.innerText.toUpperCase().indexOf(filter) > -1 || code.innerText.toUpperCase().indexOf(filter) > -1) {
+            cards[i].style.display = "";
+        } else {
+            cards[i].style.display = "none";
+        }
+    }
+}
+</script>
 </body>
 </html>

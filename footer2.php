@@ -7,17 +7,19 @@
     © EDUCARE || All Rights Reserved.
   </h6>
 </div>
-    <script src="js/jquery.min.js"></script>
-    <script src="master/assets/DataTables/datatables.min.js"></script>
-    <script src="js/popper.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/sidebar.js"></script>
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/DataTables/datatables.js"></script>
+    <script src="assets/js/bootstrap.bundle.js"></script>
+    <script src="assets/js/sidebar.js"></script>
     <script type="text/javascript">
       // Call the dataTables jQuery plugin
     $(document).ready(function() {
       $('#dataTable').DataTable();
     });
 
+    $(document).ready(function() {
+      $('#posts').DataTable();
+    });
 
     tinymce.init({
       selector: 'textarea',
