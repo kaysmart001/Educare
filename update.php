@@ -35,7 +35,7 @@ $answers=mysqli_fetch_all($q20,MYSQL_ASSOC);
 if (mysqli_num_rows($q20)>=1) {
     $answer=mysqli_query($conn,"UPDATE answers SET ansid='$ans' WHERE qid='$qid'" ) or die('Error in updating answers');
 }else{
-    $answer=mysqli_query($conn,"INSERT INTO answers VALUES(null,'$sn','$email','$eid','$qid','$ans')" ) or die('Error in saving answers');
+    $answer=mysqli_query($conn,"INSERT INTO answers VALUES('$sn','$email','$eid','$qid','$ans')" ) or die('Error in saving answers');
 }
 
 if($sn != $total)
