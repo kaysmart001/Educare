@@ -13,6 +13,6 @@ $conn=mysqli_connect('sql311.epizy.com','epiz_33459705','hvZgW4p2guu7','epiz_334
         echo $e->getMessage();
     }
 
-$mysqli = new mysqli('sql311.epizy.com', 'epiz_33459705', 'hvZgW4p2guu7', 'epiz_33459705_cbt_db');
+$mysqli = new mysqli('localhost', 'root', '', 'root');
 
 ?>
